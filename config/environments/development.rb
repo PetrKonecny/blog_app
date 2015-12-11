@@ -41,4 +41,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :letter_opener
 
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                          :email => {
+                                              :email_prefix => "[Blog app exception notification] ",
+                                              :sender_address => %{"notifier" <exception@blogapp.com>},
+                                              :exception_recipients => %w{petrknn5@gmail.com}
+                                          }
+
 end
