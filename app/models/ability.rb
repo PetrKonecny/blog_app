@@ -8,7 +8,7 @@ class Ability
       can :dashboard
       can :manage , :all
     else
-      can :manage , Post, :user_id => user.id
+      can :manage, Post, :user_id => user.id
     end
 
   end
